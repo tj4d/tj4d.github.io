@@ -1,27 +1,29 @@
 # Pocket Front — PF-58 demo build
 
 Static web build of **Pocket Front**, cut by the Build agent for the PF-58 human
-checkpoint (PF-234).
+checkpoint (PF-257).
 
-* **Built from:** `tj4d/pocket-front` @ `a78f8e3` (`main`, 2026-10-25)
+* **Built from:** `tj4d/pocket-front` @ `2caaa89` (`main`, 2026-10-25)
 * **Command:** `pnpm build:web` (Expo SDK 54 static export)
 * **Contents:** the exported `apps/mobile/dist` only — no source, no secrets.
 * **Play it:** open `https://tj4d.github.io/` in a browser.
 
-This build carries **PF-217**, the UI-kit fix that paints a button as a button:
-the battle screen's `END TURN` is now a 144 × 40 filled, centred button instead of
-a thin blue bar, the victory screen's `CONTINUE` is a filled button, the Supply
-Depot's offer rows read `CLOSE ASSAULT — 35 RQ` and `AMMO CRATES — 35 RQ` instead of
-`CLOSE F` and `AMMO CR`, and the victory panel's last line no longer sits on its
-bottom border. It also carries **PF-216** (the nine sector-1/2/3 `SECTOR_COMMAND`
-boss encounters) and **PF-223** (the client's content manifest, which is what
-carries those nine into the app), so a run fights three real sector objectives
-instead of three empty boards; plus PF-222 (the mono pixel font's `_` glyph, so the
-battle ticker reads `SU_PENAL_COMPANY` and not `SU?PENAL?COMPANY`), PF-218,
-PF-224, PF-226 and PF-229.
+This build carries **ADR-0014's implementation (PF-253)** — movement is measured in
+columns: every unit advances exactly one column on the enemy's turn, a card moves its
+target exactly as far as it says, and `moveCost` is a unit's weight rather than a
+barrier. It also carries **PF-245** (the campaign map shows the engine's refusal on a
+refused march), **PF-247** (a reinforcement whose authored cell is spoken for lands in
+the first free cell of its own sector), **PF-246** (the app's bundle now carries the
+**41 Intel Drop events**, so an Intel Drop node opens a real event screen with a title,
+a body and choices — it no longer opens empty), **PF-243** (the event route shows the
+engine's refusals), **PF-239** and **PF-238** (the Supply Depot and the reward offer no
+longer offer an asset the run already holds), **PF-237** (the `CHOOSE_REWARD` reducer
+writes the run it was given, and §3.5's dead-weight Deployment card **stays in your
+deck** instead of leaving it), **PF-220** (the battle route's exits no longer strand the
+run), **PF-241** and **PF-251**.
 
-It replaces PF-225's build from `main @ 49b7793`, which predates PF-217 and
-therefore still showed every button as a thin blue bar with its label in it.
+It replaces PF-234's build from `main @ a78f8e3`, which predated all of the above —
+most visibly the Intel Drop, the dead-weight card rule and ADR-0014 itself.
 
 The run sheet Trevor walks is `docs/DEMO.md` in the source repository. Known issues
-for this build are listed on Multica issue PF-234.
+for this build are listed on Multica issue PF-257.
