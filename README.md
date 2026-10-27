@@ -8,10 +8,23 @@ checkpoint (PF-297).
 * **Contents:** the exported `apps/mobile/dist` only — no source, no secrets.
 * **Play it:** open `https://tj4d.github.io/` in a browser.
 
-This build replaces PF-292's (`de2b16d`) and carries the **four merges that were
-still missing from it** — **PF-294, PF-296, PF-298 and PF-293**. **All four are in
-`apps/mobile/**` — the engine, the corpus, the art and the simulator are unchanged
-from the previous published build.**
+This build replaces PF-292's (`de2b16d`) and carries the **four client merges that were
+still missing from it** — **PF-294, PF-296, PF-298 and PF-293** — all four in
+`apps/mobile/**`.
+
+**It also carries two changes that are not client-side, and they change the game's
+numbers.** The previous published build was cut before them:
+
+* **ADR-0015's lever (PF-299)** — the enemy's Command Post now resolves its hit points
+  **per nation** (germany 56, usa 71, ussr 56) instead of a flat 46. This is in
+  `packages/engine`.
+* **PF-213** — the nine commander kits are re-drawn by deck and roster swaps, so no
+  number moved but every kit's silhouette changed. This is in `packages/content`.
+
+The **art and the simulator are unchanged**. So the measured figures moved: the
+simulator on this tree reads a **44.0 % win rate** (was 81.0 %) and a **9.00-turn**
+median battle (was 6.00) — the §11.4 band is inside 35–55 % on this build for the
+first time.
 
 * **PF-294 — the Order of Battle sheet reads its unit names whole.** The sheet's
   row cut the name in silence: it read `FALLSCHIRMJÄGE`. This build reads
