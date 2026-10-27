@@ -38,5 +38,28 @@ The bundle is **3 465 206 B = 3.31 MB of JS in 13 chunks** (entry 2 180 208 B,
 on disk in 44 files (45 with this README), with the 8 001 100 B CanvasKit wasm and
 the 23 292 B atlas.
 
+**Verified on this artefact**, from outside the build machine, in headless Chromium at
+**360×640 logical, DPR 3**, a fresh browser context per route:
+
+* **all nine routes answer 200, with 0 console errors and 0 page errors** — no `#419`,
+  no `#418`;
+* **every reading above reads whole at 100 % and at 130 %** — the title `POCKET FRONT`,
+  the selection `THE BOX IS OPEN`, the map's legend caption
+  `NEXT MARCH · TAP A LIT NODE`, the map's empty-state sentence
+  `NO RUN IN PROGRESS · CHOOSE YOUR COMMAND FIRST`, the War Record's `CAMPAIGN LEDGER`,
+  the Order of Battle sheet's `FALLSCHIRMJÄGER` and `KUBELWAGEN RECON`, its header
+  counter `6 OF 8 · 1 LOST`, and the map's legend row `SUPPLY · ROW 4`;
+* the three **130 %** fixes are visible in the pixels: this build matches the committed
+  130 % baselines at **0 %** on the menu, the selection screen and the War Record's WAR
+  tab, where the previously published bytes differ by **38.17 %**, **34.57 %** and
+  **4.01 %**;
+* the **negative control** — the previously published bytes (`8312db9`) driven by the
+  same script — reads `FALLSCHIRMJÄGE` instead of `FALLSCHIRMJÄGER`, and its
+  `KUBELWAGEN RECON` row is cut as well.
+
+One reading is **still cut**, and it was cut in the previous build too: the museum's
+unit caption loses the last two characters of its line at 130 % (PF-306). It is not on
+the demo's path.
+
 The run sheet Trevor walks is `docs/DEMO.md` in the source repository. Known issues
 for this build are listed on Multica issue PF-297.
